@@ -55,7 +55,7 @@ Copyright Notice
 
 Peterson & Turner       Expires October 13, 2017                [Page 1]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
 
    include Simplified BSD License text as described in Section 4.e of
@@ -70,9 +70,12 @@ Table of Contents
      3.1.  Using OCSP with TN Auth List  . . . . . . . . . . . . . .   4
        3.1.1.  OCSP Extension Specification  . . . . . . . . . . . .   5
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   7
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
+   7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Appendix A.  ASN.1 Module . . . . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
@@ -102,18 +105,19 @@ Table of Contents
    determine if the caller is authorized to use that calling number in
    SIP.
 
-   However, there is significant dynamism in telephone number
-   assignment, and due to practices like number portability, information
-   about number assignment can suddenly become stale.  This problem is
-   especially pronounced when a TN Authorization List extension
+
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 2]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
 
+   However, there is significant dynamism in telephone number
+   assignment, and due to practices like number portability, information
+   about number assignment can suddenly become stale.  This problem is
+   especially pronounced when a TN Authorization List extension
    associates a large block of telephone numbers with a certificate, as
    relying parties need a way to learn if any one of those telephone
    numbers has been ported to a different administrative entity.
@@ -158,17 +162,17 @@ Internet-Draft                 STIR Certs                     April 2017
    revoked certificates, but CRLs do support a variety of mechanisms to
    scope the size of the CRLs based on revocation reasons (e.g., key
    compromise vs CA compromise), user certificates only, and CA
-   certificates only as well as just operationally deciding to keep the
-   CRLs small.  However, scoping the CRL introduces other issues (i.e.,
-   does the RP have all of the CRL partitions).
-
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 3]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
+
+   certificates only as well as just operationally deciding to keep the
+   CRLs small.  However, scoping the CRL introduces other issues (i.e.,
+   does the RP have all of the CRL partitions).
 
    CAs in the STIR architecture will likely all create CRLs for audit
    purposes, but probably not for real-time status information.  Any
@@ -214,18 +218,17 @@ Internet-Draft                 STIR Certs                     April 2017
 
    The requirement to consult OCSP in real time results in a network
    round-trip delay, which is something to consider because it will add
-   to the call setup time.  OCSP server implementations commonly pre-
-   generate responses, and to speed up HTTPS connections, servers often
-   provide OCSP responses for each certificate in their hierarchy.  If
-
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 4]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
 
+   to the call setup time.  OCSP server implementations commonly pre-
+   generate responses, and to speed up HTTPS connections, servers often
+   provide OCSP responses for each certificate in their hierarchy.  If
    possible, both of these OCSP concepts should be adopted for use with
    STIR.
 
@@ -272,15 +275,15 @@ Internet-Draft                 STIR Certs                     April 2017
    o  Clients MUST include the OCSP TNQuery extension in requests'
       singleRequestExtensions.
 
-   o  Servers MUST include the OCSP TNQuery extension in responses'
-      singleExtensions.
-
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 5]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
+
+   o  Servers MUST include the OCSP TNQuery extension in responses'
+      singleExtensions.
 
    o  Servers SHOULD return responses that would otherwise have been
       "unknown" as "not good" (i.e., return only "good" and "not good"
@@ -326,19 +329,21 @@ Internet-Draft                 STIR Certs                     April 2017
    Appendix A.  It therefore requests that the IANA make the following
    assignments:
 
-   o  TN-HVE OCSP extension in the SMI Security for PKIX Online
-      Certificate Status Protocol (OCSP) registry:
-      http://www.iana.org/assignments/smi- numbers/smi-
-      numbers.xhtml#smi-numbers-1.3.6.1.5.5.7.48.1
+
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 6]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
 
-   1.  Privacy Considerations
+   o  TN-HVE OCSP extension in the SMI Security for PKIX Online
+      Certificate Status Protocol (OCSP) registry:
+      http://www.iana.org/assignments/smi- numbers/smi-
+      numbers.xhtml#smi-numbers-1.3.6.1.5.5.7.48.1
+
+5.  Privacy Considerations
 
    Querying for real-time status information about certificates can
    allow parties monitoring communications to gather information about
@@ -364,35 +369,39 @@ Internet-Draft                 STIR Certs                     April 2017
    require work on a generic SIP capability to carry OCSP staples that
    is outside the scope of this document.
 
-   1.  Security Considerations
+6.  Security Considerations
 
    This document is entirely about security.  For further information on
    certificate security and practices, see [RFC5280], in particular its
    Security Considerations.  For OCSP-related security considerations
    see [RFC6960] and [RFC5019].
 
-   1.  Acknowledgments
+7.  Acknowledgments
 
    Stephen Farrell provided key input to the discussions leading to this
    document.  Russ Housley provided some direct assistance and text
    surrounding the ASN.1 module.
 
-5.  References
 
-5.1.  Normative References
 
-   [I-D.ietf-stir-certificates]
-              Peterson, J. and S. Turner, "Secure Telephone Identity
-              Credentials: Certificates", draft-ietf-stir-
-              certificates-13 (work in progress), March 2017.
+
 
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 7]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
+
+8.  References
+
+8.1.  Normative References
+
+   [I-D.ietf-stir-certificates]
+              Peterson, J. and S. Turner, "Secure Telephone Identity
+              Credentials: Certificates", draft-ietf-stir-
+              certificates-13 (work in progress), March 2017.
 
    [I-D.ietf-stir-passport]
               Wendt, C. and J. Peterson, "Personal Assertion Token
@@ -433,22 +442,19 @@ Internet-Draft                 STIR Certs                     April 2017
               Environments", RFC 5019, DOI 10.17487/RFC5019, September
               2007, <http://www.rfc-editor.org/info/rfc5019>.
 
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <http://www.rfc-editor.org/info/rfc5280>.
-
-
-
-
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 8]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <http://www.rfc-editor.org/info/rfc5280>.
 
    [RFC5912]  Hoffman, P. and J. Schaad, "New ASN.1 Modules for the
               Public Key Infrastructure Using X.509 (PKIX)", RFC 5912,
@@ -491,20 +497,21 @@ Internet-Draft                 STIR Certs                     April 2017
               Technology - Abstract Syntax Notation One:
               Parameterization of ASN.1 Specifications", 2015.
 
-5.2.  Informative References
-
-   [RFC5055]  Freeman, T., Housley, R., Malpani, A., Cooper, D., and W.
-              Polk, "Server-Based Certificate Validation Protocol
-              (SCVP)", RFC 5055, DOI 10.17487/RFC5055, December 2007,
-              <http://www.rfc-editor.org/info/rfc5055>.
 
 
 
 
 Peterson & Turner       Expires October 13, 2017                [Page 9]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
+
+8.2.  Informative References
+
+   [RFC5055]  Freeman, T., Housley, R., Malpani, A., Cooper, D., and W.
+              Polk, "Server-Based Certificate Validation Protocol
+              (SCVP)", RFC 5055, DOI 10.17487/RFC5055, December 2007,
+              <http://www.rfc-editor.org/info/rfc5055>.
 
    [RFC6961]  Pettersen, Y., "The Transport Layer Security (TLS)
               Multiple Certificate Status Request Extension", RFC 6961,
@@ -547,20 +554,19 @@ Appendix A.  ASN.1 Module
    identified-organization(3) dod(6) internet(1) security(5)
    mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) }
 
-   ;
-
-   id-pkix-ocsp OBECT IDENTIFIER ::= id-ad-ocsp
-
-   - - Telephone Number Query OCSP Extension -
-
-
 
 
 
 Peterson & Turner       Expires October 13, 2017               [Page 10]
 
-Internet-Draft                 STIR Certs                     April 2017
+Internet-Draft                  STIR OCSP                     April 2017
 
+
+   ;
+
+   id-pkix-ocsp OBECT IDENTIFIER ::= id-ad-ocsp
+
+   - - Telephone Number Query OCSP Extension -
 
    re-ocsp-tn-query EXTENSION ::= { SYNTAX TNQuery IDENTIFIED BY id-
    pkix-ocsp-stir-tn }
@@ -583,12 +589,6 @@ Authors' Addresses
    sn3rd
 
    Email: sean@sn3rd.com
-
-
-
-
-
-
 
 
 

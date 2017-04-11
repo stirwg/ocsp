@@ -283,9 +283,12 @@ address {
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 Using OCSP with TN Auth List"/>
 <link href="#rfc.section.3.1.1" rel="Chapter" title="3.1.1 OCSP Extension Specification"/>
 <link href="#rfc.section.4" rel="Chapter" title="4 IANA Considerations"/>
-<link href="#rfc.references" rel="Chapter" title="5 References"/>
-<link href="#rfc.references.1" rel="Chapter" title="5.1 Normative References"/>
-<link href="#rfc.references.2" rel="Chapter" title="5.2 Informative References"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 Privacy Considerations"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 Acknowledgments"/>
+<link href="#rfc.references" rel="Chapter" title="8 References"/>
+<link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References"/>
+<link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References"/>
 <link href="#rfc.appendix.A" rel="Chapter" title="A ASN.1 Module"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
@@ -362,9 +365,12 @@ address {
 <ul><li>3.1.   <a href="#rfc.section.3.1">Using OCSP with TN Auth List</a></li>
 <ul><li>3.1.1.   <a href="#rfc.section.3.1.1">OCSP Extension Specification</a></li>
 </ul></ul><li>4.   <a href="#rfc.section.4">IANA Considerations</a></li>
-<li>5.   <a href="#rfc.references">References</a></li>
-<ul><li>5.1.   <a href="#rfc.references.1">Normative References</a></li>
-<li>5.2.   <a href="#rfc.references.2">Informative References</a></li>
+<li>5.   <a href="#rfc.section.5">Privacy Considerations</a></li>
+<li>6.   <a href="#rfc.section.6">Security Considerations</a></li>
+<li>7.   <a href="#rfc.section.7">Acknowledgments</a></li>
+<li>8.   <a href="#rfc.references">References</a></li>
+<ul><li>8.1.   <a href="#rfc.references.1">Normative References</a></li>
+<li>8.2.   <a href="#rfc.references.2">Informative References</a></li>
 </ul><li>Appendix A.   <a href="#rfc.appendix.A">ASN.1 Module</a></li>
 <li><a href="#rfc.authors">Authors' Addresses</a></li>
 
@@ -432,27 +438,15 @@ address {
 <ul>
   <li>TN-HVE OCSP extension in the SMI Security for PKIX Online Certificate Status Protocol (OCSP) registry: http://www.iana.org/assignments/smi- numbers/smi-numbers.xhtml#smi-numbers-1.3.6.1.5.5.7.48.1</li>
 </ul>
-<p/>
-
-<ol>
-  <li>Privacy Considerations</li>
-</ol>
-<p id="rfc.section.4.p.4">Querying for real-time status information about certificates can allow parties monitoring communications to gather information about relying parties and the originators of communications.  Unfortunately, the TNQuery extension adds a new field that could potentailly be monitored by OCSP eavesdroppers: the calling telephone number provides a specific piece of additional data about the originator of communications.  Using OCSP over TLS is one potential countermeasure to this threat, as described in <a href="#RFC6960">[RFC6960]</a> Appendix A.1.</p>
-<p id="rfc.section.4.p.5">Another way to mitigate leaking information about relying parties is to use OCSP stapling.  Strategies for stapling OCSP <a href="#RFC6961">[RFC6961]</a> have become common in some web PKI environments as an optimization which allows web servers to send up-to-date certificate status information acquired from OCSP to clients as TLS is negotiated.  A similar mechanism could be implemented for SIP requests, in which the authentication service adds status information for its certificate to the SIP request, which would save the verifier the trouble of performing the OCSP dip itself.  Especially for high-volume authentication and verification services, this could furthermore result in significant performance improvements.  This would however require work on a generic SIP capability to carry OCSP staples that is outside the scope of this document.</p>
-<p/>
-
-<ol>
-  <li>Security Considerations</li>
-</ol>
-<p id="rfc.section.4.p.7">This document is entirely about security.  For further information on certificate security and practices, see <a href="#RFC5280">[RFC5280]</a>, in particular its Security Considerations.  For OCSP-related security considerations see <a href="#RFC6960">[RFC6960]</a> and <a href="#RFC5019">[RFC5019]</a>.</p>
-<p/>
-
-<ol>
-  <li>Acknowledgments</li>
-</ol>
-<p id="rfc.section.4.p.9">Stephen Farrell provided key input to the discussions leading to this document.  Russ Housley provided some direct assistance and text surrounding the ASN.1 module.</p>
-<h1 id="rfc.references"><a href="#rfc.references">5.</a> References</h1>
-<h2 id="rfc.references.1"><a href="#rfc.references.1">5.1.</a> Normative References</h2>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#privacy-considerations" id="privacy-considerations">Privacy Considerations</a></h1>
+<p id="rfc.section.5.p.1">Querying for real-time status information about certificates can allow parties monitoring communications to gather information about relying parties and the originators of communications.  Unfortunately, the TNQuery extension adds a new field that could potentailly be monitored by OCSP eavesdroppers: the calling telephone number provides a specific piece of additional data about the originator of communications.  Using OCSP over TLS is one potential countermeasure to this threat, as described in <a href="#RFC6960">[RFC6960]</a> Appendix A.1.</p>
+<p id="rfc.section.5.p.2">Another way to mitigate leaking information about relying parties is to use OCSP stapling.  Strategies for stapling OCSP <a href="#RFC6961">[RFC6961]</a> have become common in some web PKI environments as an optimization which allows web servers to send up-to-date certificate status information acquired from OCSP to clients as TLS is negotiated.  A similar mechanism could be implemented for SIP requests, in which the authentication service adds status information for its certificate to the SIP request, which would save the verifier the trouble of performing the OCSP dip itself.  Especially for high-volume authentication and verification services, this could furthermore result in significant performance improvements.  This would however require work on a generic SIP capability to carry OCSP staples that is outside the scope of this document.</p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
+<p id="rfc.section.6.p.1">This document is entirely about security.  For further information on certificate security and practices, see <a href="#RFC5280">[RFC5280]</a>, in particular its Security Considerations.  For OCSP-related security considerations see <a href="#RFC6960">[RFC6960]</a> and <a href="#RFC5019">[RFC5019]</a>.</p>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#acknowledgments" id="acknowledgments">Acknowledgments</a></h1>
+<p id="rfc.section.7.p.1">Stephen Farrell provided key input to the discussions leading to this document.  Russ Housley provided some direct assistance and text surrounding the ASN.1 module.</p>
+<h1 id="rfc.references"><a href="#rfc.references">8.</a> References</h1>
+<h2 id="rfc.references.1"><a href="#rfc.references.1">8.1.</a> Normative References</h2>
 <table>
   <tbody>
     <tr>
@@ -565,7 +559,7 @@ address {
     </tr>
   </tbody>
 </table>
-<h2 id="rfc.references.2"><a href="#rfc.references.2">5.2.</a> Informative References</h2>
+<h2 id="rfc.references.2"><a href="#rfc.references.2">8.2.</a> Informative References</h2>
 <table>
   <tbody>
     <tr>
