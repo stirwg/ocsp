@@ -1,5 +1,5 @@
 ---
-title: "Secure Telephone Identity Credentials: OCSP Usage"
+title: "Secure Telephone Identity Revisited: OCSP Usage"
 abbrev: STIR OCSP
 docname: draft-ietf-stir-certificates-ocsp-latest
 date: {DATE}
