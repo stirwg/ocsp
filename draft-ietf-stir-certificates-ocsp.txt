@@ -9,7 +9,7 @@ Expires: October 13, 2017                                          sn3rd
                                                           April 11, 2017
 
 
-           Secure Telephone Identity Credentials: OCSP Usage
+            Secure Telephone Identity Revisited: OCSP Usage
                 draft-ietf-stir-certificates-ocsp-latest
 
 Abstract
