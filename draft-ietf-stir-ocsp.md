@@ -79,7 +79,7 @@ control telephone numbers.  The STIR certificates
 system based on {{X.509}} version 3 certificates in accordance with
 {{!RFC5280}} for that purpose.  Those credentials can then be used by
 STIR authentication services {{!I-D.ietf-stir-rfc4474bis}} to sign
-PASSporT objects {{I-D.ietf-stir-passport}} carried in a SIP {{!RFC3261}}
+PASSporT objects {{!I-D.ietf-stir-passport}} carried in a SIP {{!RFC3261}}
 request.
 
 The STIR certificates document specifies an extension to X.509 that
@@ -233,7 +233,7 @@ HVE optimizations augmented as follows:
 
 * Implementations MUST use SHA-256 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values.  That
-is CertID.hashAlgorithm is id-sha256 {{RFC4055}} and the values are
+is CertID.hashAlgorithm is id-sha256 {{!RFC4055}} and the values are
 truncated to 160-bits as specified Option 1 in Section 2 of
 {{!RFC7093}}.
 
@@ -347,7 +347,7 @@ specifications referred to here.
 
 This ASN.1 module imports ASN.1 from {{!RFC5912}}.
 
-[TO DO: this ASN.1 module is a stub and needs to be redone!]
+TO DO: this ASN.1 module is a stub and needs to be redone!
 ~~~
   TN-Module-2016-2
     { iso(1) identified-organization(3) dod(6) internet(1) security(5)
