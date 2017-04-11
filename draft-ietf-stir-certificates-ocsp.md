@@ -1,6 +1,6 @@
 ---
 title: "Secure Telephone Identity Credentials: OCSP Usage"
-abbrev: STIR Certs
+abbrev: STIR OCSP
 docname: draft-ietf-stir-certificates-ocsp-latest
 date: {DATE}
 category: std
@@ -291,7 +291,7 @@ assignments:
 Status Protocol (OCSP) registry: http://www.iana.org/assignments/smi-
 numbers/smi-numbers.xhtml#smi-numbers-1.3.6.1.5.5.7.48.1
 
-5.  Privacy Considerations
+# Privacy Considerations
 
 Querying for real-time status information about certificates can
 allow parties monitoring communications to gather information about
@@ -317,14 +317,14 @@ result in significant performance improvements.  This would however
 require work on a generic SIP capability to carry OCSP staples that
 is outside the scope of this document.
 
-6.  Security Considerations
+# Security Considerations
 
 This document is entirely about security.  For further information on
 certificate security and practices, see {{RFC5280}}, in particular its
 Security Considerations.  For OCSP-related security considerations
 see {{RFC6960}} and {{RFC5019}}.
 
-7.  Acknowledgments
+# Acknowledgments
 
 Stephen Farrell provided key input to the discussions leading to this
 document.  Russ Housley provided some direct assistance and text
