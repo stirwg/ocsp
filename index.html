@@ -586,18 +586,43 @@ address {
 <p id="rfc.section.A.p.1">This appendix provides the normative ASN.1 <a href="#X.680">[X.680]</a> definitions for the structures described in this specification using ASN.1, as defined in <a href="#X.680">[X.680]</a> through <a href="#X.683">[X.683]</a>.</p>
 <p id="rfc.section.A.p.2">The modules defined in this document are compatible with the most current ASN.1 specification published in 2015 (see <a href="#X.680">[X.680]</a>, <a href="#X.681">[X.681]</a>, <a href="#X.682">[X.682]</a>, <a href="#X.683">[X.683]</a>).  None of the newly defined tokens in the 2008 ASN.1 (DATE, DATE-TIME, DURATION, NOT-A-NUMBER, OID-IRI, RELATIVE- OID-IRI, TIME, TIME-OF-DAY)) are currently used in any of the ASN.1 specifications referred to here.</p>
 <p id="rfc.section.A.p.3">This ASN.1 module imports ASN.1 from <a href="#RFC5912">[RFC5912]</a>.</p>
-<p id="rfc.section.A.p.4">TO DO: this ASN.1 module is a stub and needs to be redone! ~~~ TN-Module-2016-2 { iso(1) identified-organization(3) dod(6) internet(1) security(5) mechanisms(5) pkix(7) id-mod(0) id-mod-tn-module(TBD) }</p>
-<p id="rfc.section.A.p.5">DEFINITIONS EXPLICIT TAGS ::= BEGIN</p>
-<p id="rfc.section.A.p.6">IMPORTS</p>
-<p id="rfc.section.A.p.7">id-ad, id-ad-ocsp, id-pe  &#8211; From <a href="#RFC5912">[RFC5912]</a> FROM PKIX1Explicit-2009 { iso(1) identified-organization(3) dod(6) internet(1) security(5) mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) }</p>
-<p id="rfc.section.A.p.8">EXTENSION  &#8211; From <a href="#RFC5912">[RFC5912]</a> FROM PKIX-CommonTypes-2009 { iso(1) identified-organization(3) dod(6) internet(1) security(5) mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) }</p>
-<p id="rfc.section.A.p.9">;</p>
-<p id="rfc.section.A.p.10">id-pkix-ocsp OBECT IDENTIFIER ::= id-ad-ocsp</p>
-<p id="rfc.section.A.p.11">&#8211; &#8211; Telephone Number Query OCSP Extension &#8211;</p>
-<p id="rfc.section.A.p.12">re-ocsp-tn-query  EXTENSION ::= { SYNTAX TNQuery IDENTIFIED BY id-pkix-ocsp-stir-tn }</p>
-<p id="rfc.section.A.p.13">TNQuery ::= E164Number</p>
-<p id="rfc.section.A.p.14">id-pkix-ocsp-stir-tn    OBJECT IDENTIFIER ::= { id-pkix-ocsp 10 }</p>
-<p id="rfc.section.A.p.15">END ~~~</p>
+<p id="rfc.section.A.p.4">TO DO: this ASN.1 module is a stub and needs to be redone!</p>
+<pre>
+  TN-Module-2016-2
+    { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+      mechanisms(5) pkix(7) id-mod(0) id-mod-tn-module(TBD) }
+
+  DEFINITIONS EXPLICIT TAGS ::= BEGIN
+
+  IMPORTS
+
+  id-ad, id-ad-ocsp, id-pe  -- From [RFC5912]
+    FROM PKIX1Explicit-2009
+      { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+        mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) }
+
+   EXTENSION  -- From [RFC5912]
+     FROM PKIX-CommonTypes-2009
+       { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+         mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) }
+
+  ;
+
+  id-pkix-ocsp OBECT IDENTIFIER ::= id-ad-ocsp
+
+  --
+  -- Telephone Number Query OCSP Extension
+  --
+
+  re-ocsp-tn-query  EXTENSION ::= {
+    SYNTAX TNQuery IDENTIFIED BY id-pkix-ocsp-stir-tn }
+
+  TNQuery ::= E164Number
+
+  id-pkix-ocsp-stir-tn    OBJECT IDENTIFIER ::= { id-pkix-ocsp 10 }
+
+  END
+</pre>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>
 </h1>

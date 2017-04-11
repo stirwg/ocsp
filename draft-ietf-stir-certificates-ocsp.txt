@@ -538,21 +538,21 @@ Appendix A.  ASN.1 Module
 
    This ASN.1 module imports ASN.1 from [RFC5912].
 
-   TO DO: this ASN.1 module is a stub and needs to be redone! ~~~ TN-
-   Module-2016-2 { iso(1) identified-organization(3) dod(6) internet(1)
-   security(5) mechanisms(5) pkix(7) id-mod(0) id-mod-tn-module(TBD) }
+   TO DO: this ASN.1 module is a stub and needs to be redone!
 
-   DEFINITIONS EXPLICIT TAGS ::= BEGIN
 
-   IMPORTS
 
-   id-ad, id-ad-ocsp, id-pe - From [RFC5912] FROM PKIX1Explicit-2009 {
-   iso(1) identified-organization(3) dod(6) internet(1) security(5)
-   mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) }
 
-   EXTENSION - From [RFC5912] FROM PKIX-CommonTypes-2009 { iso(1)
-   identified-organization(3) dod(6) internet(1) security(5)
-   mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -562,20 +562,40 @@ Peterson & Turner       Expires October 13, 2017               [Page 10]
 Internet-Draft                  STIR OCSP                     April 2017
 
 
-   ;
+  TN-Module-2016-2
+    { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+      mechanisms(5) pkix(7) id-mod(0) id-mod-tn-module(TBD) }
 
-   id-pkix-ocsp OBECT IDENTIFIER ::= id-ad-ocsp
+  DEFINITIONS EXPLICIT TAGS ::= BEGIN
 
-   - - Telephone Number Query OCSP Extension -
+  IMPORTS
 
-   re-ocsp-tn-query EXTENSION ::= { SYNTAX TNQuery IDENTIFIED BY id-
-   pkix-ocsp-stir-tn }
+  id-ad, id-ad-ocsp, id-pe  -- From [RFC5912]
+    FROM PKIX1Explicit-2009
+      { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+        mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) }
 
-   TNQuery ::= E164Number
+   EXTENSION  -- From [RFC5912]
+     FROM PKIX-CommonTypes-2009
+       { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+         mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) }
 
-   id-pkix-ocsp-stir-tn OBJECT IDENTIFIER ::= { id-pkix-ocsp 10 }
+  ;
 
-   END ~~~
+  id-pkix-ocsp OBECT IDENTIFIER ::= id-ad-ocsp
+
+  --
+  -- Telephone Number Query OCSP Extension
+  --
+
+  re-ocsp-tn-query  EXTENSION ::= {
+    SYNTAX TNQuery IDENTIFIED BY id-pkix-ocsp-stir-tn }
+
+  TNQuery ::= E164Number
+
+  id-pkix-ocsp-stir-tn    OBJECT IDENTIFIER ::= { id-pkix-ocsp 10 }
+
+  END
 
 Authors' Addresses
 
@@ -589,26 +609,6 @@ Authors' Addresses
    sn3rd
 
    Email: sean@sn3rd.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
