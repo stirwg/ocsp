@@ -10,7 +10,7 @@ Expires: October 13, 2017                                          sn3rd
 
 
            Secure Telephone Identity Credentials: OCSP Usage
-                  draft-ietf-stir-certificates-latest
+                draft-ietf-stir-certificates-ocsp-latest
 
 Abstract
 
