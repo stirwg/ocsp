@@ -1,4 +1,4 @@
-# Secure Telephone Identity Credentials: OCSP Usage
+# Secure Telephone Identity Revisted: OCSP Usage
 
 This is the working area for the Working Group internet-draft, "Secure Telephone Identity Credentials: OCSP Usage".
 
