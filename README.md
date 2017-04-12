@@ -4,7 +4,7 @@ This is the working area for the Working Group internet-draft, "Secure Telephone
 
 * [Editor's copy](https://stirwg.github.io/ocsp/)
 * [Working Group Draft](https://tools.ietf.org/html/draft-ietf-stir-ocsp)
-* [Compare Working Group Draft and Editor's copy](https://tools.ietf.org/rfcdiff?url1=https://tools.ietf.org/id/draft-ietf-stir-ocsp.txt&url2=https://stirwg.github.io/ocsp/draft-ietf-stir-ocsp.txt)
+* [Compare Working Group Draft and Editor's copy](https://tools.ietf.org/rfcdiff?url1=https://tools.ietf.org/id/draft-ietf-stir-certificates-ocsp.txt&url2=https://stirwg.github.io/ocsp/draft-ietf-stir-certificates-ocsp.txt)
 
 
 ## Building the Draft
